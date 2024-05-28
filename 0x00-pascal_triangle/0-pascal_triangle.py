@@ -30,7 +30,7 @@ def pascal_triangle(n):
             # Get the last row of the triangle
             last_row = pascal_triangle[-1]
             # Calculate the middle values of the current row based on the last row
-            for j in range(1, integer):
+            for j in range(1, integer + 1):
                 first_row.append(last_row[j - 1] + last_row[j])
             # End the current row with a 1
             first_row.append(1)
