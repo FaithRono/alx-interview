@@ -39,3 +39,4 @@ def pascal_triangle(n):
     
     # Return the completed Pascal's Triangle
     return pascal_triangle
+
