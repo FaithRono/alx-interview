@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""pascal triangle"""
-
+#a function def pascal_triangle(n): that returns a list of lists of integers representing the Pascal’s triangle of n:
 
 def pascal_triangle(n):
     """a pascals triangle is has rows of integers,it doesn't contain a 0 or a neg number,
@@ -11,7 +10,7 @@ def pascal_triangle(n):
         n (int): n is the number of rows to be generated for the pascals triangle
 
     Returns:
-       List[List[int]]: returns a list of lists of integers representing the Pascals triangle of n
+       List[List[int]]: returns a list of lists of integers representing the Pascal’s triangle of n
     """
     #check if n is less than 0 or equal then return an empty list
     if n <= 0:
