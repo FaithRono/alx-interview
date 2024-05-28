@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-#a function def pascal_triangle(n): that returns a list of lists of integers representing the Pascal’s triangle of n:
+"""a function def pascal_triangle(n): that returns a list of lists of integers representing the Pascal’s triangle of n:"""
+
 
 def pascal_triangle(n):
     """a pascals triangle is has rows of integers,it doesn't contain a 0 or a neg number,
