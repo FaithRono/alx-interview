@@ -10,14 +10,14 @@ def pascal_triangle(n):
     if n <= 0:
         return []
 
-    triangle = [[1]]  # Initialize the first row of the triangle
+    pascal_triangle = [[1]]  # Initialize the first row of the triangle
 
-    for i in range(1, n):
-        row = [1]  # Start each row with a 1
-        for j in range(1, i):
+    for integer in range(1, n):
+        pascal_row = [1]  # Start each row with a 1
+        for j in range(1, integer):
             # Compute the value based on the two values above it
-            row.append(triangle[i - 1][j - 1] + triangle[i - 1][j])
-        row.append(1)  # End each row with a 1
-        triangle.append(row)  # Add the row to the triangle
+            pascal_row.append(pascal_triangle[integer - 1][j - 1] + pascal_triangle[integer - 1][j])
+        pascal_row.append(1)  # End each row with a 1
+        pascal_triangle.append(pascal_row)  # Add the row to the triangle
 
-    return triangle
+    return pascal_triangle
