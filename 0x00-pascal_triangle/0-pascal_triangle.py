@@ -2,8 +2,6 @@
 """pascal triangle"""
 
 
-#a function def pascal_triangle(n): that returns a list of lists of integers representing the Pascal’s triangle of n:
-
 def pascal_triangle(n):
     """a pascals triangle is has rows of integers,it doesn't contain a 0 or a neg number,
     the first row begins with 1 and the last row ends with 1, iteration occurs inclusively
