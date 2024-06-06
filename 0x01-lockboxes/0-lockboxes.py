@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""a module for opening boxes
+"""
 
 def canUnlockAll(boxes):
     if not boxes:
