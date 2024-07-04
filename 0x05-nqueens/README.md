@@ -4,7 +4,11 @@ This Python script solves the classic N-Queens problem using a backtracking algo
 ####  Usage
 Make sure you have Python 3 installed on your system.
 Run the script with the desired value of N as a command-line argument.
-                           ```python nqueens.py N```
+                          
+```
+python nqueens.py N
+```
+
 Replace N with the desired board size (e.g., 8 for an 8x8 chessboard).
 
 ##  Algorithm Explanation
