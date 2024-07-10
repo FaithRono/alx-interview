@@ -1,39 +1,53 @@
-// 0-starwars_characters.js
+#!/usr/bin/node
 
+/* eslint-disable */
+
+// Importing the request module
 const request = require('request');
 
-const movieId = process.argv[2]; // Get the movie ID from command line argument
-
-if (!movieId) {
-  console.error('Usage: node 0-starwars_characters.js <movie_id>');
-  process.exit(1);
+// Function to fetch character endpoints from the Star Wars API based on film ID
+function getCharacterEndPoints(filmID) {
+  const filmURL = `https://swapi-api.alx-tools.com/api/films/${filmID}`;
+  return new Promise((resolve, reject) => {
+    // Making a request to fetch film data
+    request(filmURL, (error, response, body) => {
+      if (error) {
+        reject(error); // Reject promise on error
+      } else {
+        resolve(JSON.parse(body).characters); // Resolve promise with characters array
+      }
+    });
+  });
 }
 
-// URL for the Star Wars API films endpoint
-const apiUrl = `https://swapi.dev/api/films/${movieId}/`;
+const starWarID = process.argv[2]; // Retrieve movie ID from command line arguments
 
-// Making a GET request to fetch data about the movie
-request(apiUrl, (error, response, body) => {
-  if (error) {
-    console.error('Error:', error);
-  } else if (response.statusCode !== 200) {
-    console.error('Failed to retrieve data. Status:', response.statusCode);
-  } else {
-    const filmData = JSON.parse(body);
-    const characters = filmData.characters;
-
-    // Fetching each character's data
-    characters.forEach(characterUrl => {
-      request(characterUrl, (error, response, body) => {
-        if (error) {
-          console.error('Error:', error);
-        } else if (response.statusCode !== 200) {
-          console.error('Failed to retrieve character data. Status:', response.statusCode);
-        } else {
-          const characterData = JSON.parse(body);
-          console.log(characterData.name); // Print each character's name
-        }
+// Calling the function to get character endpoints
+getCharacterEndPoints(starWarID)
+  .then((userEndPoints) => {
+    // Mapping over each character endpoint to create an array of promises
+    const requests = userEndPoints.map((element) => {
+      return new Promise((resolve, reject) => {
+        // Making a request to fetch character data
+        request(element, (error, response, body) => {
+          if (error) {
+            reject(error); // Reject promise on error
+          } else {
+            resolve(JSON.parse(body).name); // Resolve promise with character name
+          }
+        });
       });
     });
-  }
-});
+
+    // Resolving all promises in parallel
+    Promise.all(requests)
+      .then((characterNames) => {
+        // Logging each character name retrieved
+        characterNames.forEach((name) => {
+          console.log(name);
+        });
+      })
+      .catch((error) => console.log(error)); // Catch any errors during promise resolution
+  })
+  .catch((error) => console.log(error)); // Catch any errors during initial API request
+
