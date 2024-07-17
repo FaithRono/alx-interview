@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+"""
+rotating a 2 d matrix
+"""
+
 
 def rotate_2d_matrix(matrix):
     n = len(matrix)
@@ -9,4 +13,3 @@ def rotate_2d_matrix(matrix):
     # Reverse each row
     for i in range(n):
         matrix[i].reverse()
-
