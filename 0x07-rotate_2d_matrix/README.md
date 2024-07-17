@@ -1,1 +1,1 @@
-rotating a 2d matrix
+this function first transposes the matrix by swapping elements across the main diagonal and then reverses each row to achieve the desired rotation. The matrix is modified in-place, meaning the original matrix is updated rather than creating a new one.
